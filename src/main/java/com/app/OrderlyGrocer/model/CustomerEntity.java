@@ -7,11 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
-public class Customer {
+@Data
+@Table(name = "customers")
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,12 +28,12 @@ public class Customer {
     @Email(message ="Invalid Email Format")
     private String email;
 
-    private String adderss;
+    private String address;
 
     @NotNull(message ="Contact detail is Mandatory")
     private String phoneNo;
 
-    @OneToMany(mappedBy="customer")
-    private List<Order> order;
+    // @OneToMany(mappedBy="customer")
+    // private List<OrderEntity> order;
     
 }

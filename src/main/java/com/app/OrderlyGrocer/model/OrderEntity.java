@@ -14,7 +14,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,15 +23,15 @@ public class Order {
 
     @ManyToOne
     @NotNull
-    private Customer customer;
+    private CustomerEntity customer;
 
     
     @ManyToMany
     @NotNull
-    private List<GroceryItem> groceryItem;
+    private List<GroceryItemEntity> groceryItem;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+    // @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 
     @NotNull 

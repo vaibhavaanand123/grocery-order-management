@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class GroceryItem {
+public class GroceryItemEntity {
 
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ private Double price;
 
 private Long Quantity;
 
-@ManyToMany(mappedBy="groceryItems")
-private List<Order> orders;
+// @ManyToMany(mappedBy="groceryItems")
+// private List<OrderEntity> orders;
     
 }
