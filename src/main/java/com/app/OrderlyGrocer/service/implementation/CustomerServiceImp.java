@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.OrderlyGrocer.dto.Customer;
+import com.app.OrderlyGrocer.mapper.CustomerMapper;
 import com.app.OrderlyGrocer.model.CustomerEntity;
 import com.app.OrderlyGrocer.repository.CustomerRepository;
 import com.app.OrderlyGrocer.service.CustomerService;
@@ -20,7 +21,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public void createCustomer(Customer customer) {
 
-        CustomerEntity customerEntity= convertToEntity(customer);
+        CustomerEntity customerEntity= CustomerMapper.convertToEntity(customer);
          customerRepository.save(customerEntity);
     }
 
@@ -39,36 +40,14 @@ public class CustomerServiceImp implements CustomerService {
         List<CustomerEntity> allCustomer=customerRepository.findAll();
         
         for(CustomerEntity c:allCustomer){
-            customer.add(convertToDto(c));
+            customer.add(CustomerMapper.convertToDto(c));
         }
         return customer;
     }
 
 
 
-	@Override
-	public CustomerEntity convertToEntity(Customer customer) {
-		CustomerEntity customerEntity = new CustomerEntity();
-        customerEntity.setName(customer.getName());
-        customerEntity.setEmail(customer.getEmail());
-        customerEntity.setAddress(customer.getAddress());
-        customerEntity.setPhoneNo(customer.getPhoneNo());
-        return customerEntity;
-
-	}
-
-    public Customer convertToDto(CustomerEntity customer){
-
-        Customer customerDto =new Customer();
-        customerDto.setName(customer.getName());
-        customerDto.setEmail(customer.getEmail());
-        customerDto.setAddress(customer.getAddress());
-        customerDto.setPhoneNo(customer.getPhoneNo());
-        return customerDto;
-
-
-        
-    }
+	
 
     
     

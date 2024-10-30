@@ -1,6 +1,6 @@
 package com.app.OrderlyGrocer.dto;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 
 @Data

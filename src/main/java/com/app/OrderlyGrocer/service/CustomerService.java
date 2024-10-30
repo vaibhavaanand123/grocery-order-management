@@ -7,10 +7,7 @@ import com.app.OrderlyGrocer.model.CustomerEntity;
 
 
 public interface CustomerService {
-    Customer convertToDto(CustomerEntity customer);
-
-    CustomerEntity convertToEntity(Customer customer);
-
+   
     void createCustomer(Customer customer);
 
     Customer getCustomerById();
