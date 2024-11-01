@@ -2,17 +2,16 @@ package com.app.OrderlyGrocer.service;
 
 import java.util.List;
 
-import com.app.OrderlyGrocer.dto.Customer;
-import com.app.OrderlyGrocer.model.CustomerEntity;
+import com.app.OrderlyGrocer.dto.CustomerDto;
 
 
 public interface CustomerService {
    
-    void createCustomer(Customer customer);
+    CustomerDto createCustomer(CustomerDto customer);
 
-    Customer getCustomerById();
+    CustomerDto getCustomerById(Long id);
 
-    List<Customer> getAllCustomer();
+    List<CustomerDto> getAllCustomer();
     
     
 }

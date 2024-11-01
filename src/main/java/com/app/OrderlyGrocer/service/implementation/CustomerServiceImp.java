@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.OrderlyGrocer.dto.Customer;
+import com.app.OrderlyGrocer.dto.CustomerDto;
 import com.app.OrderlyGrocer.mapper.CustomerMapper;
 import com.app.OrderlyGrocer.model.CustomerEntity;
 import com.app.OrderlyGrocer.repository.CustomerRepository;
@@ -19,24 +19,27 @@ public class CustomerServiceImp implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public void createCustomer(Customer customer) {
+    public CustomerDto createCustomer(CustomerDto customer) {
 
         CustomerEntity customerEntity= CustomerMapper.convertToEntity(customer);
-         customerRepository.save(customerEntity);
+        CustomerEntity savedCustomer=customerRepository.save(customerEntity);
+
+         return CustomerMapper.convertToDto(savedCustomer);
+
     }
 
- 
-
     @Override
-    public Customer getCustomerById() {
+    public CustomerDto getCustomerById(Long id) {
+
+        CustomerEntity customerEntity=customerRepository.findById(id).orElseThrow(()->new RuntimeException("Customer with "+ id+" does not Exist"));
     
-        throw new UnsupportedOperationException("Unimplemented method 'getCustomerById'");
+       return CustomerMapper.convertToDto(customerEntity);
     }
 
     @Override
-    public List<Customer> getAllCustomer() {
+    public List<CustomerDto> getAllCustomer() {
 
-        List<Customer> customer=new ArrayList<>();
+        List<CustomerDto> customer=new ArrayList<>();
         List<CustomerEntity> allCustomer=customerRepository.findAll();
         
         for(CustomerEntity c:allCustomer){

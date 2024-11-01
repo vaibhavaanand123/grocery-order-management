@@ -8,8 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
+@Data
 public class GroceryItemEntity {
 
 @Id
@@ -17,13 +19,14 @@ public class GroceryItemEntity {
 private Long id;
 
 @NotNull(message="Iten Name is Mandatory")
-private String itenName;
+private String itemName;
 
 private String category;
 
 @NotNull(message="Price of Iten is Mandatory")
 private Double price;
 
+@NotNull
 private Long Quantity;
 
 // @ManyToMany(mappedBy="groceryItems")

@@ -1,11 +1,11 @@
 package com.app.OrderlyGrocer.mapper;
 
-import com.app.OrderlyGrocer.dto.Customer;
+import com.app.OrderlyGrocer.dto.CustomerDto ;
 import com.app.OrderlyGrocer.model.CustomerEntity;
 
 public class CustomerMapper {
 
-	public static CustomerEntity convertToEntity(Customer customer) {
+	public static CustomerEntity convertToEntity(CustomerDto customer) {
 		CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setName(customer.getName());
         customerEntity.setEmail(customer.getEmail());
@@ -15,9 +15,10 @@ public class CustomerMapper {
 
 	}
 
-    public static Customer convertToDto(CustomerEntity customer){
+    public static CustomerDto convertToDto(CustomerEntity customer){
 
-        Customer customerDto =new Customer();
+        CustomerDto customerDto =new CustomerDto();
+        customerDto.setId(customer.getId());
         customerDto.setName(customer.getName());
         customerDto.setEmail(customer.getEmail());
         customerDto.setAddress(customer.getAddress());

@@ -1,7 +1,10 @@
 package com.app.OrderlyGrocer.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,11 +12,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
 
 @Entity
+@Data
 public class OrderEntity {
 
     @Id
@@ -30,12 +34,12 @@ public class OrderEntity {
     @NotNull
     private List<GroceryItemEntity> groceryItem;
 
-    @NotNull
-    // @Temporal(TemporalType.TIMESTAMP)
-    private Date orderDate;
+    
+    @CreationTimestamp
+    private LocalDateTime orderDate;
 
     @NotNull 
-    private Double totalPrive;
+    private Double totalPrice;
 
     
 }
